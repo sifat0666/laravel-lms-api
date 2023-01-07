@@ -8,8 +8,10 @@ use App\Http\Resources\UserResource;
 // use App\Http\Resources\UserResource;
 // use App\Http\Resources\UsersResource;
 use App\Models\User;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+
+// use PhpParser\Node\Stmt\TryCatch;
 
 class UserController extends Controller
 {
@@ -40,10 +42,6 @@ class UserController extends Controller
         return new UserResource($user);
     }
 
-    public function logout()
-    {
-        auth()->logout();
-        return response()->json(['success' => true, 'msg' => 'user logged out']);
-    }
+
 
 }

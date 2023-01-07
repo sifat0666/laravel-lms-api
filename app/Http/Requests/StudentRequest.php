@@ -2,11 +2,9 @@
 
 namespace App\Http\Requests;
 
-
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends FormRequest
+class StudentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,7 +13,7 @@ class LoginRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -25,15 +23,11 @@ class LoginRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        if (request()->isMethod('post')) {
+            return [
 
-        ];
+            ];
+        }
+
     }
-
-
-// public function failedValidation(Validator $validator)
-// {
-//     Helper::sendError('validation error' , $validator->errors());
-// }
-
 }
