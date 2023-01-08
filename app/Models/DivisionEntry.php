@@ -32,6 +32,7 @@ class DivisionEntry extends Model
         'highest_mark',
         'note',
         'session',
+        'exam_name'
     ];
 
 }

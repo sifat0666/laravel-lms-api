@@ -36,6 +36,7 @@ return new class extends Migration {
             $table->string('highest_mark');
             $table->string('note');
             $table->string('session');
+            $table->string('exam_name');
             $table->timestamps();
         });
     }

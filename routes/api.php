@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AcademicYear;
 use App\Http\Controllers\Api\CustomFeeCall;
+use App\Http\Controllers\Api\CustomQuerys;
 use App\Http\Controllers\Api\FeesDetermination;
 use App\Http\Controllers\Api\InstituteInfo;
 use App\Http\Controllers\Api\LoginController;
@@ -49,6 +50,7 @@ Route::apiResource('users', UserController::class);
 
 //Custom
 Route::post('customfeecall', [CustomFeeCall::class, 'fee']);
+Route::post('custom-student-call', [CustomQuerys::class, 'filterStudent']);
 
 
 //Student Routes

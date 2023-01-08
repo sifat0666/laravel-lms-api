@@ -15,7 +15,7 @@ class ExamNameAndFee extends Controller
      */
     public function index()
     {
-        return ModelsExamNameAndFee::orderBy('created_at', 'desc')->paginate(5);
+        return ModelsExamNameAndFee::orderBy('created_at', 'desc')->paginate(100);
     }
 
     /**

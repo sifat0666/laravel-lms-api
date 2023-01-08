@@ -61,6 +61,7 @@ class DivisionEntry extends Controller
             'highest_mark' => $request->highest_mark,
             'note' => $request->note,
             'session' => $request->session,
+            'exam_name' => $request->session,
         ]);
     }
 
