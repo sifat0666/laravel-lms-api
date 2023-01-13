@@ -115,35 +115,35 @@ class StudentController extends Controller
     public function update(Request $request, Student $student)
     {
 
-        $imageName = Str::random(32) . "." . $request->image->getClientOriginalExtension();
+
 
         $student->update([
-            'session' => $request->session,
+            // 'session' => $request->session,
             'class' => $request->class,
-            'notun_puraton' => $request->notun_puraton,
-            'student_id' => $request->student_id,
-            'roll' => $request->roll,
-            'gender' => $request->gender,
-            'form_number' => $request->form_number,
-            'abashik_onabashik' => $request->abashik_onabashik,
-            'student_name' => $request->student_name,
-            'father_name' => $request->father_name,
-            'mother_name' => $request->mother_name,
-            'dob' => $request->dob,
-            'nid_no' => $request->nid_no,
-            'nationality' => $request->nationality,
-            'blood_group' => $request->blood_group,
-            'phn_no' => $request->phn_no,
-            'perm_graam' => $request->perm_graam,
-            'perm_daak' => $request->perm_daak,
-            'perm_thana' => $request->perm_thana,
-            'perm_jela' => $request->perm_jela,
-            'graam' => $request->graam,
-            'daak' => $request->daak,
-            'thana' => $request->thana,
-            'jela' => $request->jela,
-            'comment' => $request->comment,
-            'image' => $imageName
+            // 'notun_puraton' => $request->notun_puraton,
+            // 'student_id' => $request->student_id,
+            // 'roll' => $request->roll,
+            // 'gender' => $request->gender,
+            // 'form_number' => $request->form_number,
+            // 'abashik_onabashik' => $request->abashik_onabashik,
+            // 'student_name' => $request->student_name,
+            // 'father_name' => $request->father_name,
+            // 'mother_name' => $request->mother_name,
+            // 'dob' => $request->dob,
+            // 'nid_no' => $request->nid_no,
+            // 'nationality' => $request->nationality,
+            // 'blood_group' => $request->blood_group,
+            // 'phn_no' => $request->phn_no,
+            // 'perm_graam' => $request->perm_graam,
+            // 'perm_daak' => $request->perm_daak,
+            // 'perm_thana' => $request->perm_thana,
+            // 'perm_jela' => $request->perm_jela,
+            // 'graam' => $request->graam,
+            // 'daak' => $request->daak,
+            // 'thana' => $request->thana,
+            // 'jela' => $request->jela,
+            // 'comment' => $request->comment,
+            // 'image' => $imageName
         ]);
 
         return new $student;

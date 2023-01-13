@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AcademicYear;
+use App\Http\Controllers\Api\Attendance;
 use App\Http\Controllers\Api\CustomFeeCall;
 use App\Http\Controllers\Api\CustomQuerys;
 use App\Http\Controllers\Api\FeesDetermination;
@@ -13,8 +14,11 @@ use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\StudentController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ExamNameAndFee;
+use App\Http\Controllers\Api\Marks;
 use App\Http\Controllers\DivisionEntry;
+use App\Http\Controllers\MonthName;
 use App\Http\Controllers\PassMarks;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -49,8 +53,9 @@ Route::apiResource('users', UserController::class);
 
 
 //Custom
-Route::post('customfeecall', [CustomFeeCall::class, 'fee']);
+Route::post('customfeecall', [CustomQuerys::class, 'fee']);
 Route::post('custom-student-call', [CustomQuerys::class, 'filterStudent']);
+Route::post('result', [CustomQuerys::class, 'result']);
 
 
 //Student Routes
@@ -63,3 +68,17 @@ Route::apiResource('institute-info', InstituteInfo::class);
 Route::apiResource('academicyear', AcademicYear::class);
 Route::apiResource('marhalaclass', MarhalaClass::class);
 Route::apiResource('fees-determination', FeesDetermination::class);
+Route::apiResource('marks', Marks::class);
+Route::apiResource('attendance', Attendance::class);
+Route::apiResource('month-entry', MonthName::class);
+
+
+
+
+Route::post('update-student', function (Request $request) {
+    $student = Student::find($request->id);
+
+    $student->class = $request->class;
+    $student->save();
+    return $student;
+});
