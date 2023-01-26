@@ -96,6 +96,8 @@ class MonthName extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ModelsMonthName::find($id);
+        $data->delete();
+        return 'deleted';
     }
 }

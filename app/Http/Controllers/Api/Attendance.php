@@ -89,6 +89,8 @@ class Attendance extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ModelsAttendance::find($id);
+        $data->delete();
+        return 'deleted';
     }
 }

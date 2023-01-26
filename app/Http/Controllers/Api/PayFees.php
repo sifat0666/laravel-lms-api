@@ -15,7 +15,7 @@ class PayFees extends Controller
      */
     public function index()
     {
-        //
+        return ModelsPayFees::orderBy('created_at', 'desc')->get();
     }
 
     /**
@@ -36,11 +36,21 @@ class PayFees extends Controller
      */
     public function store(Request $request)
     {
+
+        $validated = $request->validate([
+
+            'student_id' => 'required|unique:pay_fees|max:255',
+
+
+        ]);
+
         return ModelsPayFees::create([
             'ammount' => $request->ammount,
+            'discount' => $request->discount,
             'voucher_no' => $request->voucher_no,
             'comment' => $request->comment,
-            'student_id' => $request->student_id
+            'student_id' => $request->student_id,
+            'determined_fee' => $request->determined_fee
         ]);
     }
 
@@ -86,6 +96,8 @@ class PayFees extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ModelsPayFees::find($id);
+        $data->delete();
+        return 'deleted';
     }
 }

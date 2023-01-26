@@ -24,6 +24,8 @@ class Employee extends Model
         'qualification',
         'reg_no',
         'thana',
-        'type'
+        'type',
+        'dob',
+        'phn_no'
     ];
 }

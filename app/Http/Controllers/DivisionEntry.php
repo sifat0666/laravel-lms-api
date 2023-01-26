@@ -107,6 +107,8 @@ class DivisionEntry extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ModelsDivisionEntry::find($id);
+        $data->delete();
+        return 'deleted';
     }
 }

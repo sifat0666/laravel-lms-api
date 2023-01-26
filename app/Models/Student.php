@@ -36,7 +36,10 @@ class Student extends Model
         'thana',
         'jela',
         'comment',
-        'image'
+        'image',
+        'khabar_fee_dibe',
+        'mashik_fee_dibe',
+        'vorti_fee_dibe'
     ];
 
     public function payFees()

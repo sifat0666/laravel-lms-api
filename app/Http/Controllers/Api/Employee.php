@@ -15,7 +15,8 @@ class Employee extends Controller
      */
     public function index()
     {
-        //
+        return ModelsEmployee::orderBy('created_at', 'desc')->paginate(100);
+
     }
 
     /**
@@ -51,7 +52,9 @@ class Employee extends Controller
             'qualification' => $request->qualification,
             'reg_no' => $request->reg_no,
             'thana' => $request->thana,
-            'type' => $request->type
+            'type' => $request->type,
+            'dob' => $request->dob,
+            'phn_no' => $request->phn_no
         ]);
     }
 
@@ -97,6 +100,8 @@ class Employee extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ModelsEmployee::find($id);
+        $data->delete();
+        return 'deleted';
     }
 }

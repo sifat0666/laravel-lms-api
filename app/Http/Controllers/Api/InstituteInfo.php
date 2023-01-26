@@ -15,7 +15,7 @@ class InstituteInfo extends Controller
      */
     public function index()
     {
-        return ModelsInstituteInfo::orderBy('created_at', 'desc')->paginate(1);
+        return ModelsInstituteInfo::orderBy('created_at', 'desc')->first();
     }
 
     /**
@@ -44,7 +44,7 @@ class InstituteInfo extends Controller
 
             // ]);
 
-            $x = ModelsInstituteInfo::create([
+            $x = ModelsInstituteInfo::updateOrCreate(['id' => 1], [
                 'name' => $request->name,
                 'address' => $request->address,
                 'num' => $request->num,
@@ -61,6 +61,9 @@ class InstituteInfo extends Controller
                 'thanaa' => $request->thanaa,
                 'jelaa' => $request->jelaa,
                 'ilhaka' => $request->ilhaka,
+                'logo' => $request->logo,
+                'najeme_talim_sign' => $request->najeme_talim_sign,
+                'mumtamim_sign' => $request->mumtamim_sign,
             ]);
             return $x;
 
@@ -111,6 +114,8 @@ class InstituteInfo extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ModelsInstituteInfo::find($id);
+        $data->delete();
+        return 'deleted';
     }
 }

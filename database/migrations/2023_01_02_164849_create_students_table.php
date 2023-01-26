@@ -40,6 +40,12 @@ return new class extends Migration {
             $table->string('jela')->nullable();
             $table->string('comment')->nullable();
             $table->string('image')->nullable();
+            $table->boolean('khabar_fee_dibe')->nullable();
+            $table->boolean('mashik_fee_dibe')->nullable();
+            $table->boolean('vorti_fee_dibe')->nullable();
+
+
+
             $table->timestamps();
         });
     }

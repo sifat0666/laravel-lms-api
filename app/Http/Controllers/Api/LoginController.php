@@ -18,7 +18,7 @@ class LoginController extends Controller
     {
         //login user
         if (!Auth::attempt($request->only('email', 'password'))) {
-            Helper::sendError('invalid credentials');
+            // Helper::sendError('invalid credentials');
         }
 
         return new UserResource(auth()->user());

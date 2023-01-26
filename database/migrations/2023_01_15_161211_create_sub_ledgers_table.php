@@ -12,14 +12,12 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('pay_fees', function (Blueprint $table) {
+        Schema::create('sub_ledgers', function (Blueprint $table) {
             $table->id();
-            $table->string('ammount');
-            $table->string('voucher_no');
-            $table->string('comment');
-            $table->string('discount');
-            $table->string('determined_fee')->nullable();
-            $table->foreignId('student_id')->constrained()->onDelete('cascade');
+            $table->string('chart_of_account');
+            $table->string('fund');
+            $table->string('general_ledger');
+            $table->string('sub_ledger');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('pay_fees');
+        Schema::dropIfExists('sub_ledgers');
     }
 };

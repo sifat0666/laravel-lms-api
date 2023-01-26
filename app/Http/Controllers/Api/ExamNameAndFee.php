@@ -87,6 +87,8 @@ class ExamNameAndFee extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ModelsExamNameAndFee::find($id);
+        $data->delete();
+        return 'deleted';
     }
 }

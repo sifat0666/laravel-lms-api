@@ -87,6 +87,8 @@ class PassMarks extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ModelsPassMarks::find($id);
+        $data->delete();
+        return 'deleted';
     }
 }

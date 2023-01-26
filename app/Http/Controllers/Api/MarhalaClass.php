@@ -83,6 +83,8 @@ class MarhalaClass extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ModelsMarhalaClass::find($id);
+        $data->delete();
+        return 'deleted';
     }
 }

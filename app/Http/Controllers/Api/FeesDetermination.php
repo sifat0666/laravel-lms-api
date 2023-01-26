@@ -96,6 +96,8 @@ class FeesDetermination extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ModelsFeesDetermination::find($id);
+        $data->delete();
+        return 'deleted';
     }
 }

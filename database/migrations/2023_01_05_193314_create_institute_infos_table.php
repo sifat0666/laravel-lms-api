@@ -30,6 +30,9 @@ return new class extends Migration {
             $table->string('jelaa');
             $table->string('ilhak');
             $table->string('ilhaka');
+            $table->string('logo');
+            $table->string('mumtamim_sign');
+            $table->string('najeme_talim_sign');
             $table->timestamps();
 
         });

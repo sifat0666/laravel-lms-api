@@ -13,7 +13,9 @@ class PayFees extends Model
         'ammount',
         'voucher_no',
         'comment',
-        'student_id'
+        'student_id',
+        'discount',
+        'determined_fee'
     ];
 
     public function student()

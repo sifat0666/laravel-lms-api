@@ -90,6 +90,8 @@ class Marks extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ModelsMarks::find($id);
+        $data->delete();
+        return 'deleted';
     }
 }

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Employee as ModelsEmployee;
+use App\Http\Controllers\Controller;
+use App\Models\PaymentMethod as ModelsPaymentMethod;
 use Illuminate\Http\Request;
 
-class Employee extends Controller
+class PaymentMethod extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,7 @@ class Employee extends Controller
      */
     public function index()
     {
-        // return ModelsPassMarks::orderBy('created_at', 'desc')->paginate(5);
-
+        return ModelsPaymentMethod::orderBy('created_at', 'desc')->paginate(100);
     }
 
     /**
@@ -25,7 +25,7 @@ class Employee extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -36,22 +36,10 @@ class Employee extends Controller
      */
     public function store(Request $request)
     {
-        return ModelsEmployee::create([
-            'daak' => $request->daak,
-            'data_of_joining' => $request->data_of_joining,
-            'employee_id' => $request->employee_id,
-            'exp' => $request->exp,
-            'father_name' => $request->father_name,
-            'graam' => $request->graam,
-            'jela' => $request->jela,
-            'mother_name' => $request->mother_name,
-            'passing_district' => $request->passing_district,
-            'passing_year' => $request->passing_year,
-            'position' => $request->position,
-            'qualification' => $request->qualification,
-            'reg_no' => $request->reg_no,
-            'thana' => $request->thana,
-            'type' => $request->type
+        return ModelsPaymentMethod::create([
+            'account_name' => $request->account_name,
+            'account_type' => $request->account_type,
+            'mobile_number' => $request->mobile_number,
         ]);
     }
 
@@ -97,7 +85,7 @@ class Employee extends Controller
      */
     public function destroy($id)
     {
-        $data = ModelsEmployee::find($id);
+        $data = ModelsPaymentMethod::find($id);
         $data->delete();
         return 'deleted';
     }

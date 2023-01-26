@@ -18,7 +18,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return Student::orderBy('created_at', 'desc')->paginate(5);
+        return Student::orderBy('created_at', 'desc')->get();
     }
 
     /**
@@ -39,48 +39,47 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            // $imageName = Str::random(32) . "." . $request->image->getClientOriginalExtension();
 
-            //Create student
-            $x = Student::create([
-                'session' => $request->session,
-                'class' => $request->class,
-                'notun_puraton' => $request->notun_puraton,
-                'student_id' => $request->student_id,
-                'roll' => $request->roll,
-                'gender' => $request->gender,
-                'form_number' => $request->form_number,
-                'abashik_onabashik' => $request->abashik_onabashik,
-                'student_name' => $request->student_name,
-                'father_name' => $request->father_name,
-                'mother_name' => $request->mother_name,
-                'dob' => $request->dob,
-                'nid_no' => $request->nid_no,
-                'nationality' => $request->nationality,
-                'blood_group' => $request->blood_group,
-                'phn_no' => $request->phn_no,
-                'perm_graam' => $request->perm_graam,
-                'perm_daak' => $request->perm_daak,
-                'perm_thana' => $request->perm_thana,
-                'perm_jela' => $request->perm_jela,
-                'graam' => $request->graam,
-                'daak' => $request->daak,
-                'thana' => $request->thana,
-                'jela' => $request->jela,
-                'comment' => $request->comment,
-                // 'image' => $imageName
-            ]);
+        // $imageName = Str::random(32) . "." . $request->image->getClientOriginalExtension();
 
-            //save image
-            // Storage::disk('public')->put($imageName, file_get_contents($request->image));
-            return response()->json(['id' => $x->id], 200);
-        } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'something went wrong',
-                'error' => $e->getMessage()
-            ]);
-        }
+        //Create student
+        return Student::create([
+            'session' => $request->session,
+            'class' => $request->class,
+            'notun_puraton' => $request->notun_puraton,
+            'student_id' => $request->student_id,
+            'roll' => $request->roll,
+            'gender' => $request->gender,
+            'form_number' => $request->form_number,
+            'abashik_onabashik' => $request->abashik_onabashik,
+            'student_name' => $request->student_name,
+            'father_name' => $request->father_name,
+            'mother_name' => $request->mother_name,
+            'dob' => $request->dob,
+            'nid_no' => $request->nid_no,
+            'nationality' => $request->nationality,
+            'blood_group' => $request->blood_group,
+            'phn_no' => $request->phn_no,
+            'perm_graam' => $request->perm_graam,
+            'perm_daak' => $request->perm_daak,
+            'perm_thana' => $request->perm_thana,
+            'perm_jela' => $request->perm_jela,
+            'graam' => $request->graam,
+            'daak' => $request->daak,
+            'thana' => $request->thana,
+            'jela' => $request->jela,
+            'comment' => $request->comment,
+            'khabar_fee_dibe' => $request->khabar_fee_dibe,
+            'mashik_fee_dibe' => $request->mashik_fee_dibe,
+            'vorti_fee_dibe' => $request->vorti_fee_dibe,
+            'image' => $request->image,
+        ]);
+
+        //save image
+        // Storage::disk('public')->put($imageName, file_get_contents($request->image));
+
+
+
     }
 
     /**
@@ -155,8 +154,10 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy($id)
     {
-        return $student->delete();
+        $data = Student::find($id);
+        $data->delete();
+        return 'deleted';
     }
 }

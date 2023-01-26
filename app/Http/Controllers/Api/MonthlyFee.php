@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Employee as ModelsEmployee;
+use App\Http\Controllers\Controller;
+use App\Models\MonthlyFee as ModelsMonthlyFee;
 use Illuminate\Http\Request;
 
-class Employee extends Controller
+class MonthlyFee extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,7 @@ class Employee extends Controller
      */
     public function index()
     {
-        // return ModelsPassMarks::orderBy('created_at', 'desc')->paginate(5);
-
+        return ModelsMonthlyFee::orderBy('created_at', 'desc')->paginate(100);
     }
 
     /**
@@ -36,23 +36,23 @@ class Employee extends Controller
      */
     public function store(Request $request)
     {
-        return ModelsEmployee::create([
-            'daak' => $request->daak,
-            'data_of_joining' => $request->data_of_joining,
-            'employee_id' => $request->employee_id,
-            'exp' => $request->exp,
-            'father_name' => $request->father_name,
-            'graam' => $request->graam,
-            'jela' => $request->jela,
-            'mother_name' => $request->mother_name,
-            'passing_district' => $request->passing_district,
-            'passing_year' => $request->passing_year,
-            'position' => $request->position,
-            'qualification' => $request->qualification,
-            'reg_no' => $request->reg_no,
-            'thana' => $request->thana,
-            'type' => $request->type
-        ]);
+        // return ModelsMonthlyFee2::create();
+
+        $data = [
+            'class' => $request->class,
+            'determined_fee' => $request->determined_fee,
+            'discount' => $request->discount,
+            'fee_name' => $request->fee_name,
+            'month' => $request->month,
+            'order_no' => $request->order_no,
+            'receiver' => $request->receiver,
+            'student_id' => $request->student_id,
+            'student_name' => $request->student_name,
+            'submitted_fee' => $request->submitted_fee,
+            'submit_date ' => strval($request->submit_date)
+        ];
+
+        return ModelsMonthlyFee::updateOrCreate([['student_id' => $request->student_id, 'month' => $request->month]], $data);
     }
 
     /**
@@ -97,7 +97,7 @@ class Employee extends Controller
      */
     public function destroy($id)
     {
-        $data = ModelsEmployee::find($id);
+        $data = ModelsMonthlyFee::find($id);
         $data->delete();
         return 'deleted';
     }

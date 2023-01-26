@@ -24,11 +24,13 @@ return new class extends Migration {
             $table->string('mother_name');
             $table->string('passing_district');
             $table->string('passing_year');
+            $table->string('dob');
             $table->string('position');
             $table->string('qualification');
             $table->string('reg_no');
             $table->string('thana');
             $table->string('type');
+            $table->string('phn_no');
             $table->timestamps();
         });
     }

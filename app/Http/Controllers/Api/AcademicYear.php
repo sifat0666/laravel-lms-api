@@ -104,6 +104,8 @@ class AcademicYear extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ModelsAcademicYear::find($id);
+        $data->delete();
+        return 'deleted';
     }
 }
