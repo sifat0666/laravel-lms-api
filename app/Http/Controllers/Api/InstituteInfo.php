@@ -36,40 +36,45 @@ class InstituteInfo extends Controller
      */
     public function store(Request $request)
     {
-        try {
 
-            // $data = $request->validate([
-            //     'academic_year_id' => 'required|string|max:255',
-            //     'academic_year' => 'required|string|max:255',
 
-            // ]);
+        // $data = $request->validate([
+        //     'academic_year_id' => 'required|string|max:255',
+        //     
 
-            $x = ModelsInstituteInfo::updateOrCreate(['id' => 1], [
-                'name' => $request->name,
-                'address' => $request->address,
-                'num' => $request->num,
-                'graam' => $request->graam,
-                'daak' => $request->daak,
-                'thana' => $request->thana,
-                'jela' => $request->jela,
-                'ilhak' => $request->ilhak,
-                'namea' => $request->namea,
-                'addressa' => $request->addressa,
-                'numa' => $request->numa,
-                'graama' => $request->graama,
-                'daaka' => $request->daaka,
-                'thanaa' => $request->thanaa,
-                'jelaa' => $request->jelaa,
-                'ilhaka' => $request->ilhaka,
-                'logo' => $request->logo,
-                'najeme_talim_sign' => $request->najeme_talim_sign,
-                'mumtamim_sign' => $request->mumtamim_sign,
-            ]);
-            return $x;
+        // ]);
 
-        } catch (\Exception $e) {
-            return ['error' => $e->getMessage()];
-        }
+        // $validated = $request->validate([
+
+        //     'academic_year' => 'required|string|max:255',
+
+
+        // ]);
+
+        $x = ModelsInstituteInfo::updateOrCreate(['id' => 1], [
+            'name' => $request->name,
+            'address' => $request->address,
+            'num' => $request->num,
+            'graam' => $request->graam,
+            'daak' => $request->daak,
+            'thana' => $request->thana,
+            'jela' => $request->jela,
+            'ilhak' => $request->ilhak,
+            'namea' => $request->namea,
+            'addressa' => $request->addressa,
+            'numa' => $request->numa,
+            'graama' => $request->graama,
+            'daaka' => $request->daaka,
+            'thanaa' => $request->thanaa,
+            'jelaa' => $request->jelaa,
+            'ilhaka' => $request->ilhaka,
+            'logo' => $request->logo,
+            'najeme_talim_sign' => $request->najeme_talim_sign,
+            'mumtamim_sign' => $request->mumtamim_sign,
+        ]);
+        return $x;
+
+
     }
 
     /**

@@ -36,11 +36,11 @@ class SubLedger extends Controller
      */
     public function store(Request $request)
     {
-        ModelsSubLedger::create([
+        ModelsSubLedger::updateOrCreate(['sub_ledger' => $request->sub_ledger], [
             'chart_of_account' => $request->chart_of_account,
             'fund' => $request->fund,
             'general_ledger' => $request->general_ledger,
-            'sub_ledger' => $request->sub_ledger
+
         ]);
     }
 

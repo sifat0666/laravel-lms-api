@@ -15,6 +15,12 @@ class msg extends Model
         'khabar',
         'mashik',
         'present',
-        'vorti'
+        'vorti',
+        'absent_msg',
+        'escaped_msg',
+        'khabar_msg',
+        'mashik_msg',
+        'present_msg',
+        'vorti_msg'
     ];
 }

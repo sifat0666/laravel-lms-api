@@ -35,10 +35,10 @@ class GeneralLedger extends Controller
      */
     public function store(Request $request)
     {
-        return ModelsGeneralLedger::create([
+        return ModelsGeneralLedger::updateOrCreate(['general_ledger' => $request->general_ledger], [
             'chart_of_account' => $request->chart_of_account,
             'fund' => $request->fund,
-            'general_ledger' => $request->general_ledger
+
         ]);
     }
 

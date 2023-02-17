@@ -20,6 +20,12 @@ return new class extends Migration {
             $table->boolean('mashik');
             $table->boolean('present');
             $table->boolean('vorti');
+            $table->string('absent_msg')->nullable();
+            $table->string('escaped_msg')->nullable();
+            $table->string('khabar_msg')->nullable();
+            $table->string('mashik_msg')->nullable();
+            $table->string('present_msg')->nullable();
+            $table->string('vorti_msg')->nullable();
             $table->timestamps();
         });
     }

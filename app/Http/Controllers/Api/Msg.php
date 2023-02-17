@@ -42,7 +42,13 @@ class Msg extends Controller
             'khabar' => $request->khabar,
             'mashik' => $request->mashik,
             'present' => $request->present,
-            'vorti' => $request->vorti
+            'vorti' => $request->vorti,
+            'absent_msg' => $request->absent_msg,
+            'escaped_msg' => $request->escaped_msg,
+            'khabar_msg' => $request->khabar_msg,
+            'mashik_msg' => $request->mashik_msg,
+            'present_msg' => $request->present_msg,
+            'vorti_msg' => $request->vorti_msg
         ]);
         return $x;
     }

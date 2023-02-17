@@ -46,9 +46,9 @@ class AcademicYear extends Controller
 
             ]);
 
-            $x = ModelsAcademicYear::create([
+            $x = ModelsAcademicYear::updateOrCreate(['academic_year' => $request->academic_year], [
                 'academic_year_id' => $request->academic_year_id,
-                'academic_year' => $request->academic_year,
+
                 'bangla_year' => $request->bangla_year,
                 'arabic_year' => $request->arabic_year,
                 'id_card_issue' => $request->id_card_issue

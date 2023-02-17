@@ -38,21 +38,25 @@ class MonthlyFee extends Controller
     {
         // return ModelsMonthlyFee2::create();
 
-        $data = [
-            'class' => $request->class,
-            'determined_fee' => $request->determined_fee,
-            'discount' => $request->discount,
-            'fee_name' => $request->fee_name,
-            'month' => $request->month,
-            'order_no' => $request->order_no,
-            'receiver' => $request->receiver,
-            'student_id' => $request->student_id,
-            'student_name' => $request->student_name,
-            'submitted_fee' => $request->submitted_fee,
-            'submit_date ' => strval($request->submit_date)
-        ];
 
-        return ModelsMonthlyFee::updateOrCreate([['student_id' => $request->student_id, 'month' => $request->month]], $data);
+
+        return ModelsMonthlyFee::updateOrCreate(
+            [
+                'student_id' => $request->student_id,
+                'month' => $request->month,
+                'fee_name' => $request->fee_name
+            ],
+            [
+                'class' => $request->class,
+                'determined_fee' => $request->determined_fee,
+                'discount' => $request->discount,
+                'order_no' => $request->order_no,
+                'receiver' => $request->receiver,
+                'student_name' => $request->student_name,
+                'submitted_fee' => $request->submitted_fee,
+                'submit_date ' => strval($request->submit_date)
+            ]
+        );
     }
 
     /**

@@ -15,7 +15,7 @@ class MarhalaClass extends Controller
      */
     public function index()
     {
-        return ModelsMarhalaClass::orderBy('created_at', 'desc')->paginate(100);
+        return ModelsMarhalaClass::orderBy('created_at', 'desc')->paginate();
     }
 
     /**
@@ -36,6 +36,12 @@ class MarhalaClass extends Controller
      */
     public function store(Request $request)
     {
+
+        $data = $request->validate([
+            'class_name' => 'required|string|max:255',
+
+
+        ]);
         return ModelsMarhalaClass::create([
             'class_name' => $request->class_name
         ]);

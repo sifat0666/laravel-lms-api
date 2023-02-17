@@ -36,15 +36,17 @@ class Attendance extends Controller
      */
     public function store(Request $request)
     {
-        return ModelsAttendance::create([
-            'attandance' => $request->attandance,
-            'class' => $request->class,
+        return ModelsAttendance::updateOrCreate([
             'date' => $request->date,
-            'name' => $request->name,
-            'roll' => $request->roll,
-            'session' => $request->session,
-            'student_id' => $request->student_id,
-        ]);
+            'student_id' => $request->student_id
+        ], [
+                'attandance' => $request->attandance,
+                'class' => $request->class,
+                'name' => $request->name,
+                'roll' => $request->roll,
+                'session' => $request->session,
+
+            ]);
     }
 
     /**

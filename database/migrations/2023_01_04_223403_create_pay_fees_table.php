@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->id();
             $table->string('ammount');
             $table->string('voucher_no');
-            $table->string('comment');
-            $table->string('discount');
+            $table->string('comment')->nullable();
+            $table->string('discount')->nullable();
             $table->string('determined_fee')->nullable();
             $table->foreignId('student_id')->constrained()->onDelete('cascade');
             $table->timestamps();

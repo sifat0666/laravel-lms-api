@@ -74,6 +74,8 @@ Route::apiResource('msg', Msg::class);
 //Custom
 Route::post('customfeecall', [CustomQuerys::class, 'fee']);
 Route::post('custom-student-call', [CustomQuerys::class, 'filterStudent']);
+Route::post('custom-fund-call', [CustomQuerys::class, 'filterFund']);
+Route::post('custom-ledger-call', [CustomQuerys::class, 'filterLedger']);
 Route::post('monthly-fee-report', [CustomQuerys::class, 'filterMonthlyFee']);
 Route::post('food-fee-report', [CustomQuerys::class, 'filterFoodFee']);
 Route::post('result', [CustomQuerys::class, 'result']);
@@ -82,6 +84,8 @@ Route::post('filter-student-by-fee', [CustomQuerys::class, 'filterStudentByFee']
 Route::post('filter-student-by-class', [CustomQuerys::class, 'filterStudentByclass']);
 Route::post('filter-subject-by-class', [CustomQuerys::class, 'filterSubjectByClass']);
 Route::post('student-servey', [CustomQuerys::class, 'studentSurvey']);
+Route::post('filter-result-per-class', [CustomQuerys::class, 'filterResultPerClass']);
+Route::get('dashboard', [CustomQuerys::class, 'dashboard']);
 Route::get('abc', [
     CustomQuerys::class,
     'filterByAdmissionFee'

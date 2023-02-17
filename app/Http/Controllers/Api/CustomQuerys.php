@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class CustomQuerys extends Controller
@@ -12,6 +13,15 @@ class CustomQuerys extends Controller
     public function filterStudent(Request $request)
     {
         return DB::table('students')->where('session', $request->session)->where('class', $request->class)->get();
+    }
+
+    public function filterFund(Request $request)
+    {
+        return DB::table('audits')->where('fund_name', $request->fund_name)->where('chart_of_account', $request->chart_of_account)->get();
+    }
+    public function filterLedger(Request $request)
+    {
+        return DB::table('audits')->where('general_ledger', $request->general_ledger)->where('sub_ledger', $request->sub_ledger)->get();
     }
 
     public function filterByAdmissionFee()
@@ -63,6 +73,15 @@ class CustomQuerys extends Controller
     public function fee(Request $request)
     {
         return DB::table('fees_determinations')->where('academic_year', $request->academic_year)->where('class_name', $request->class_name)->where('fee_name', $request->fee_name)->value($request->state);
+    }
+    public function filterResultPerClass(Request $request)
+    {
+        return DB::table('marks')
+            ->where('session', $request->session)
+            ->where('class', $request->class)
+            ->where('exam', $request->exam)
+            ->get();
+        // return 'asdf';
     }
 
     public function filterStudentByFee(Request $request)
@@ -150,5 +169,21 @@ class CustomQuerys extends Controller
             ->where('class', $request->class)
                 // ->lists('subject', 'number');
             ->get();
+    }
+
+    public function dashboard()
+    {
+        $totalUser = DB::table('users')->count();
+        $totalStudent = DB::table('students')->count();
+        $totalClass = DB::table('marhala_classes')->count();
+
+        $attandance = DB::table('attendances')->value('created_at');
+        $now = Carbon::now();
+
+        // return substr($now, 0, 10);
+
+        // return $attandance;
+        // 
+        return ['total_user' => $totalUser, 'total_student' => $totalStudent, 'total_class' => $totalClass];
     }
 }

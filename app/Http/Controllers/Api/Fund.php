@@ -36,6 +36,11 @@ class Fund extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'fund_name' => 'required|string|max:255',
+
+
+        ]);
 
         return ModelsFund::create(['fund_name' => $request->fund_name]);
     }
