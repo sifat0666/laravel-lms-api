@@ -7,15 +7,13 @@ use Illuminate\Http\Request;
 
 class LogoutController extends Controller
 {
-    public function logout()
+    public function logout(Request $request)
     {
-        try {
-            auth()->logout();
-            return response()->json(['success' => true, 'msg' => 'user logged out']);
-        } catch (\Exception $e) {
-            return response()->json(['success' => false, 'msg' => $e->getMessage()]);
+        $request->user()->currentAccessToken()->delete();
 
-        }
-
+        return response([
+            'message' => 'Successfully logged out',
+            'status' => 'success'
+        ], 200);
     }
 }
