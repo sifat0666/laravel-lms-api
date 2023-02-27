@@ -28,6 +28,17 @@ class RegisterController extends Controller
         // $teacther_control,
         // $doner_control,
         // $library_control,
+        $request->validate([
+            'email' => 'required|string|email|max:255|unique:users',
+        ]);
+
+        if (User::where('email', $request->email)->first()) {
+            return response([
+                'message' => 'Email already exists',
+                'status' => 'failed'
+            ], 200);
+        }
+
 
         $user = User::Create([
             'name' => $request->name,
@@ -47,6 +58,9 @@ class RegisterController extends Controller
 
         $user->givePermissionTo($permission);
 
-        return new UserResource($user);
+        return response([
+            'message' => 'User created successfully',
+            'status' => 'success',
+        ], 200);
     }
 }

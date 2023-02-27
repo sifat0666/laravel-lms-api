@@ -28,6 +28,7 @@ use App\Http\Controllers\Api\SubLedger;
 use App\Http\Controllers\DivisionEntry;
 use App\Http\Controllers\MonthName;
 use App\Http\Controllers\PassMarks;
+use App\Http\Controllers\PasswordResetController;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -56,9 +57,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         // 'password' => Hash::make($request->password),
     ];
 });
+
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('logout', [LogoutController::class, 'logout']);
+});
 Route::post('login', [LoginController::class, 'login']);
 Route::post('register', [RegisterController::class, 'register']);
-Route::get('logout', [LogoutController::class, 'logout']);
+
 Route::post('/send-password-reset-email', [PasswordResetController::class, 'set_reset_password_email']);
 Route::post('/reset-password/{token}', [PasswordResetController::class, 'reset_password']);
 Route::apiResource('users', UserController::class);

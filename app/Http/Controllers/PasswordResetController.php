@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
-use Illuminate\Http\Request;
 use App\Models\PasswordReset;
+use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Mail\Message;
@@ -77,14 +76,16 @@ class PasswordResetController extends Controller
             'status' => 'success'
         ], 200);
 
+        // return 'paswordreset email';
+
     }
 
 
     public function reset_password(Request $request, $token)
     {
 
-
-        $formatted = Carbon::now()->subMinutes(1)->toDateTimeString();
+        //delete tokain generated loger than 2 min ago
+        $formatted = Carbon::now()->subMinutes(2)->toDateTimeString();
         PasswordReset::where('created_at', '<=', $formatted)->delete();
 
         $request->validate([
@@ -112,5 +113,7 @@ class PasswordResetController extends Controller
             'message' => 'Password Reset Success',
             'status' => 'success'
         ], 200);
+
+        // return 'password reset';
     }
 }
