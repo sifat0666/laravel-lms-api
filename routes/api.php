@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AcademicYear;
 use App\Http\Controllers\Api\Attendance;
 use App\Http\Controllers\Api\Audit;
 use App\Http\Controllers\Api\CustomQuerys;
+use App\Http\Controllers\Api\DonerMember;
 use App\Http\Controllers\Api\Employee;
 use App\Http\Controllers\Api\FeesDetermination;
 use App\Http\Controllers\Api\InstituteInfo;
@@ -25,6 +26,7 @@ use App\Http\Controllers\Api\Msg;
 use App\Http\Controllers\Api\PaymentMethod;
 use App\Http\Controllers\Api\Subject;
 use App\Http\Controllers\Api\SubLedger;
+use App\Http\Controllers\Book;
 use App\Http\Controllers\DivisionEntry;
 use App\Http\Controllers\MonthName;
 use App\Http\Controllers\PassMarks;
@@ -77,6 +79,8 @@ Route::apiResource('fee-name', FeeName::class);
 Route::apiResource('monthly-fee', MonthlyFee::class);
 Route::apiResource('subject', Subject::class);
 Route::apiResource('msg', Msg::class);
+Route::apiResource('doner-member', DonerMember::class);
+Route::apiResource('book', Book::class);
 
 
 //Custom
