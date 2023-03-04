@@ -24,6 +24,7 @@ use App\Http\Controllers\Api\Marks;
 use App\Http\Controllers\Api\MonthlyFee;
 use App\Http\Controllers\Api\Msg;
 use App\Http\Controllers\Api\PaymentMethod;
+use App\Http\Controllers\Api\Podobi;
 use App\Http\Controllers\Api\Subject;
 use App\Http\Controllers\Api\SubLedger;
 use App\Http\Controllers\Book;
@@ -81,6 +82,7 @@ Route::apiResource('subject', Subject::class);
 Route::apiResource('msg', Msg::class);
 Route::apiResource('doner-member', DonerMember::class);
 Route::apiResource('book', Book::class);
+Route::apiResource('podobi', Podobi::class);
 
 
 //Custom
