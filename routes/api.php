@@ -25,6 +25,7 @@ use App\Http\Controllers\Api\MonthlyFee;
 use App\Http\Controllers\Api\Msg;
 use App\Http\Controllers\Api\PaymentMethod;
 use App\Http\Controllers\Api\Podobi;
+use App\Http\Controllers\Api\SallerySheet;
 use App\Http\Controllers\Api\Subject;
 use App\Http\Controllers\Api\SubLedger;
 use App\Http\Controllers\Book;
@@ -122,6 +123,7 @@ Route::apiResource('attendance', Attendance::class);
 Route::apiResource('month-entry', MonthName::class);
 Route::apiResource('food-fee', FoodFee::class);
 Route::apiResource('employee', Employee::class);
+Route::apiResource('sallery-sheet', SallerySheet::class);
 
 
 
