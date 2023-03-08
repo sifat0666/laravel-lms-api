@@ -15,6 +15,26 @@ class CustomQuerys extends Controller
         return DB::table('students')->where('session', $request->session)->where('class', $request->class)->get();
     }
 
+    public function employee_payroll_null(Request $request)
+    {
+        $students = DB::table('employees')
+            ->select(
+                'employees.id',
+                'employees.employee_id',
+                'employees.position'
+
+            )
+            ->leftJoin('sallery_sheets', 'sallery_sheets.employee_id', '=', 'employees.id')
+            ->whereNull('sallery_sheets.employee_id')
+            // ->orWhere('enrollments.academic_id', '<>', $current_academic->id)
+            ->get();
+
+        // return ModelsEmployee::orderBy('created_at', 'desc')->paginate(1000);
+        return $students;
+    }
+
+
+
     public function filterFund(Request $request)
     {
         return DB::table('audits')->where('fund_name', $request->fund_name)->where('chart_of_account', $request->chart_of_account)->get();
@@ -40,10 +60,10 @@ class CustomQuerys extends Controller
     {
         $users = DB::table('students')
             ->join('monthly_fees', 'students.id', '=', 'monthly_fees.student_id')
-                // ->join('monthly_fees', 'student.id', '=', 'orders.user_id')
-                // ->select('students.*', 'monthly_fees.discount', 'monthly_fees.submitted_fee', 'monthly_fees.determined_fee', 'monthly_fees.fee_name', 'monthly_fees.month')
-                // ->where('session', $request->session)
-                // ->where('class', $request->class)
+            // ->join('monthly_fees', 'student.id', '=', 'orders.user_id')
+            // ->select('students.*', 'monthly_fees.discount', 'monthly_fees.submitted_fee', 'monthly_fees.determined_fee', 'monthly_fees.fee_name', 'monthly_fees.month')
+            // ->where('session', $request->session)
+            // ->where('class', $request->class)
 
 
 
@@ -167,7 +187,7 @@ class CustomQuerys extends Controller
             ->where('student_id', $request->student_id)
             ->where('exam', $request->exam)
             ->where('class', $request->class)
-                // ->lists('subject', 'number');
+            // ->lists('subject', 'number');
             ->get();
     }
 

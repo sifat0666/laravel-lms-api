@@ -15,6 +15,9 @@ class SallerySheet extends Controller
      */
     public function index()
     {
+
+
+
         return ModelsSallerySheet::orderBy('created_at', 'desc')->get();
     }
 
@@ -36,7 +39,7 @@ class SallerySheet extends Controller
      */
     public function store(Request $request)
     {
-        return ModelsSallerySheet::create(['employee_id' => $request->employee_id,], [
+        return ModelsSallerySheet::updateOrCreate(['employee_id' => $request->employee_id,], [
             'bari_vara' => $request->bari_vara,
             'chikitsha' => $request->chikitsha,
             'employee_id' => $request->employee_id,

@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Employee as ModelsEmployee;
+use App\Models\TeacherMonthEntry as ModelsTeacherMonthEntry;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class Employee extends Controller
+class TeacherMonthEntry extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +15,7 @@ class Employee extends Controller
      */
     public function index()
     {
-
-
-
-        return ModelsEmployee::orderBy('created_at', 'desc')->paginate(1000);
-
+        return ModelsTeacherMonthEntry::orderBy('created_at', 'desc')->get();
     }
 
     /**
@@ -41,24 +36,20 @@ class Employee extends Controller
      */
     public function store(Request $request)
     {
-        return ModelsEmployee::create([
-            'daak' => $request->daak,
-            'data_of_joining' => $request->data_of_joining,
-            'employee_id' => $request->employee_id,
-            'exp' => $request->exp,
-            'father_name' => $request->father_name,
-            'graam' => $request->graam,
-            'jela' => $request->jela,
-            'mother_name' => $request->mother_name,
-            'passing_district' => $request->passing_district,
-            'passing_year' => $request->passing_year,
-            'position' => $request->position,
-            'qualification' => $request->qualification,
-            'reg_no' => $request->reg_no,
-            'thana' => $request->thana,
-            'type' => $request->type,
-            'dob' => $request->dob,
-            'phn_no' => $request->phn_no
+        return ModelsTeacherMonthEntry::updateOrCreate(['session' => $request->session], [
+            'm1' => $request->m1,
+            'm2' => $request->m2,
+            'm3' => $request->m3,
+            'm4' => $request->m4,
+            'm5' => $request->m5,
+            'm6' => $request->m6,
+            'm7' => $request->m7,
+            'm8' => $request->m8,
+            'm9' => $request->m9,
+            'm10' => $request->m10,
+            'm11' => $request->m11,
+            'm12' => $request->m12,
+
         ]);
     }
 
@@ -81,7 +72,7 @@ class Employee extends Controller
      */
     public function edit($id)
     {
-
+        //
     }
 
     /**
@@ -104,7 +95,7 @@ class Employee extends Controller
      */
     public function destroy($id)
     {
-        $data = ModelsEmployee::find($id);
+        $data = ModelsTeacherMonthEntry::find($id);
         $data->delete();
         return 'deleted';
     }
