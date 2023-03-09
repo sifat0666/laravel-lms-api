@@ -104,6 +104,7 @@ Route::post('student-servey', [CustomQuerys::class, 'studentSurvey']);
 Route::post('filter-result-per-class', [CustomQuerys::class, 'filterResultPerClass']);
 Route::get('dashboard', [CustomQuerys::class, 'dashboard']);
 Route::get('employee-payroll-null', [CustomQuerys::class, 'employee_payroll_null']);
+Route::post('payroll-filter', [CustomQuerys::class, 'employeePayrollFilteredBySessionAndMonth']);
 
 Route::get('abc', [
     CustomQuerys::class,

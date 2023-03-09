@@ -15,6 +15,14 @@ class CustomQuerys extends Controller
         return DB::table('students')->where('session', $request->session)->where('class', $request->class)->get();
     }
 
+    public function employeePayrollFilteredBySessionAndMonth(Request $request)
+    {
+        return DB::table('sallery_sheets')
+            ->where('session', $request->session)
+            // ->where('class', $request->class)
+            ->get();
+    }
+
     public function employee_payroll_null(Request $request)
     {
         $students = DB::table('employees')
