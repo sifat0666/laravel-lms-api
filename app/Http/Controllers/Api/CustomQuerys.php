@@ -17,11 +17,57 @@ class CustomQuerys extends Controller
 
     public function employeePayrollFilteredBySessionAndMonth(Request $request)
     {
-        return DB::table('sallery_sheets')
+
+
+        return DB::table('sallery_payment_sheets')
             ->where('session', $request->session)
-            // ->where('class', $request->class)
+            ->where('month', $request->month)
             ->get();
     }
+
+    public function employee_payroll_queue(Request $request)
+    {
+
+        // $x = DB::table('sallery_payment_sheets')
+        //     ->where('session', $request->session)
+        //     ->where('month', $request->month)
+        //     ->get();
+
+        // $students = DB::table('sallery_sheets')
+        //     ->select(
+        //         'sallery_sheets.name',
+        //         'sallery_sheets.podobi',
+        //         'sallery_sheets.employee_id',
+        //         'sallery_sheets.total'
+
+        //     )
+        //     ->leftJoin('sallery_payment_sheets', 'sallery_payment_sheets.employee_id', '=', 'sallery_sheets.employee_id')
+        //     ->whereNull('sallery_payment_sheets.employee_id')
+        //     // ->where('session', '!=', $request->session)
+        //     // ->where('month', '!=', $request->month)
+        //     ->get();
+
+        $month = $request->input('month');
+        $session = $request->input('session');
+
+
+        $students = DB::select("
+        SELECT sallery_sheets.name, sallery_sheets.podobi, sallery_sheets.employee_id, sallery_sheets.total
+        FROM sallery_sheets
+        LEFT JOIN sallery_payment_sheets
+        ON sallery_payment_sheets.employee_id = sallery_sheets.employee_id
+        AND sallery_payment_sheets.month = :month
+        AND sallery_payment_sheets.session = :session
+        WHERE sallery_payment_sheets.employee_id IS NULL
+    ", ['month' => $month, 'session' => $session]);
+
+
+        // return ModelsEmployee::orderBy('created_at', 'desc')->paginate(1000);
+        return $students;
+    }
+
+
+
 
     public function employee_payroll_null(Request $request)
     {

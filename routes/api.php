@@ -25,6 +25,7 @@ use App\Http\Controllers\Api\MonthlyFee;
 use App\Http\Controllers\Api\Msg;
 use App\Http\Controllers\Api\PaymentMethod;
 use App\Http\Controllers\Api\Podobi;
+use App\Http\Controllers\Api\SalleryPaymentSheet;
 use App\Http\Controllers\Api\SallerySheet;
 use App\Http\Controllers\Api\Subject;
 use App\Http\Controllers\Api\SubLedger;
@@ -86,6 +87,7 @@ Route::apiResource('doner-member', DonerMember::class);
 Route::apiResource('book', Book::class);
 Route::apiResource('podobi', Podobi::class);
 Route::apiResource('teacher-month-entry', TeacherMonthEntry::class);
+Route::apiResource('monthly-sallery-entry', SalleryPaymentSheet::class);
 
 
 //Custom
@@ -105,6 +107,9 @@ Route::post('filter-result-per-class', [CustomQuerys::class, 'filterResultPerCla
 Route::get('dashboard', [CustomQuerys::class, 'dashboard']);
 Route::get('employee-payroll-null', [CustomQuerys::class, 'employee_payroll_null']);
 Route::post('payroll-filter', [CustomQuerys::class, 'employeePayrollFilteredBySessionAndMonth']);
+Route::post('employee-payroll-queue', [CustomQuerys::class, 'employee_payroll_queue']);
+//employee_payroll_queue
+
 
 Route::get('abc', [
     CustomQuerys::class,
