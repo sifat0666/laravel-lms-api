@@ -58,9 +58,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         'email' => $request->user()->email,
         'id' => $request->user()->id,
         'roles' => $request->user()->roles[0],
-        // 'permissions' => $request->user()->permissions,
         'permissions' => $request->user()->permissions->pluck('name'),
-        // 'password' => Hash::make($request->password),
     ];
 });
 
@@ -111,10 +109,10 @@ Route::post('employee-payroll-queue', [CustomQuerys::class, 'employee_payroll_qu
 //employee_payroll_queue
 
 
-Route::get('abc', [
-    CustomQuerys::class,
-    'filterByAdmissionFee'
-]);
+// Route::get('abc', [
+//     CustomQuerys::class,
+//     'filterByAdmissionFee'
+// ]);
 
 
 
