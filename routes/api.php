@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\Attendance;
 use App\Http\Controllers\Api\Audit;
 use App\Http\Controllers\Api\CustomQuerys;
 use App\Http\Controllers\Api\DonerMember;
+use App\Http\Controllers\Api\DonerMemberFee;
 use App\Http\Controllers\Api\Employee;
 use App\Http\Controllers\Api\FeesDetermination;
 use App\Http\Controllers\Api\InstituteInfo;
@@ -106,6 +107,11 @@ Route::get('dashboard', [CustomQuerys::class, 'dashboard']);
 Route::get('employee-payroll-null', [CustomQuerys::class, 'employee_payroll_null']);
 Route::post('payroll-filter', [CustomQuerys::class, 'employeePayrollFilteredBySessionAndMonth']);
 Route::post('employee-payroll-queue', [CustomQuerys::class, 'employee_payroll_queue']);
+Route::post('doner-fee', [CustomQuerys::class, 'DonerFeeFilteredBySessionAndMonth']);
+
+
+
+
 //employee_payroll_queue
 
 
@@ -132,6 +138,7 @@ Route::apiResource('month-entry', MonthName::class);
 Route::apiResource('food-fee', FoodFee::class);
 Route::apiResource('employee', Employee::class);
 Route::apiResource('sallery-sheet', SallerySheet::class);
+Route::apiResource('doner-member-fee', DonerMemberFee::class);
 
 
 

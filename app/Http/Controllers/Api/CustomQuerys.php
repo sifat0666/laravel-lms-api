@@ -15,6 +15,17 @@ class CustomQuerys extends Controller
         return DB::table('students')->where('session', $request->session)->where('class', $request->class)->get();
     }
 
+    public function DonerFeeFilteredBySessionAndMonth(Request $request)
+    {
+
+
+        return DB::table('sallery_payment_sheets')
+            ->where('session', $request->session)
+            ->where('month', $request->month)
+            ->get();
+    }
+
+
     public function employeePayrollFilteredBySessionAndMonth(Request $request)
     {
 
@@ -24,6 +35,8 @@ class CustomQuerys extends Controller
             ->where('month', $request->month)
             ->get();
     }
+
+
 
     public function employee_payroll_queue(Request $request)
     {
