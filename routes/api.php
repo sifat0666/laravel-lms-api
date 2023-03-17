@@ -108,6 +108,10 @@ Route::get('employee-payroll-null', [CustomQuerys::class, 'employee_payroll_null
 Route::post('payroll-filter', [CustomQuerys::class, 'employeePayrollFilteredBySessionAndMonth']);
 Route::post('employee-payroll-queue', [CustomQuerys::class, 'employee_payroll_queue']);
 Route::post('doner-fee', [CustomQuerys::class, 'DonerFeeFilteredBySessionAndMonth']);
+Route::post('moukuf-student', [CustomQuerys::class, 'filterMoukufStudent']);
+
+
+//filterMoukufStudent
 
 
 
@@ -117,7 +121,7 @@ Route::post('doner-fee', [CustomQuerys::class, 'DonerFeeFilteredBySessionAndMont
 
 // Route::get('abc', [
 //     CustomQuerys::class,
-//     'filterByAdmissionFee'
+//     'filterByAdmissionFee'doe
 // ]);
 
 

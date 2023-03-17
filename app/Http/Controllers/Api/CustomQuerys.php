@@ -15,11 +15,35 @@ class CustomQuerys extends Controller
         return DB::table('students')->where('session', $request->session)->where('class', $request->class)->get();
     }
 
-    public function DonerFeeFilteredBySessionAndMonth(Request $request)
+    public function filterMoukufStudent(Request $request)
     {
 
 
-        return DB::table('sallery_payment_sheets')
+        $khabarFeeDibe = DB::table('students')
+            ->where('session', $request->session)
+            ->where('class', $request->class)
+            ->where('khabar_fee_dibe', 0)
+            ->get();
+        $mashikFeeDibe = DB::table('students')
+            ->where('session', $request->session)
+            ->where('class', $request->class)
+            ->where('mashik_fee_dibe', 0)
+            ->get();
+        $vortiFeeDibe = DB::table('students')
+            ->where('session', $request->session)
+            ->where('class', $request->class)
+            ->where('vorti_fee_dibe', 0)
+            ->get();
+
+
+        return ['khabarFee' => $khabarFeeDibe, 'mashikFee' => $mashikFeeDibe, 'vortiFee' => $vortiFeeDibe];
+
+    }
+
+
+    public function DonerFeeFilteredBySessionAndMonth(Request $request)
+    {
+        return DB::table('doner_member_fees')
             ->where('session', $request->session)
             ->where('month', $request->month)
             ->get();
@@ -34,6 +58,47 @@ class CustomQuerys extends Controller
             ->where('session', $request->session)
             ->where('month', $request->month)
             ->get();
+    }
+
+    public function beton_deyni(Request $request)
+    {
+
+        // $x = DB::table('sallery_payment_sheets')
+        //     ->where('session', $request->session)
+        //     ->where('month', $request->month)
+        //     ->get();
+
+        $students = DB::table('students')
+            ->select(
+                'students.name',
+                'sallery_sheets.podobi',
+                'sallery_sheets.employee_id',
+                'sallery_sheets.total'
+
+            )
+            ->leftJoin('sallery_payment_sheets', 'sallery_payment_sheets.employee_id', '=', 'sallery_sheets.employee_id')
+            ->whereNull('sallery_payment_sheets.employee_id')
+                // ->where('session', '!=', $request->session)
+                // ->where('month', '!=', $request->month)
+            ->get();
+
+        $month = $request->input('month');
+        $session = $request->input('session');
+
+
+        $students = DB::select("
+        SELECT sallery_sheets.name, sallery_sheets.podobi, sallery_sheets.employee_id, sallery_sheets.total
+        FROM sallery_sheets
+        LEFT JOIN sallery_payment_sheets
+        ON sallery_payment_sheets.employee_id = sallery_sheets.employee_id
+        AND sallery_payment_sheets.month = :month
+        AND sallery_payment_sheets.session = :session
+        WHERE sallery_payment_sheets.employee_id IS NULL
+    ", ['month' => $month, 'session' => $session]);
+
+
+        // return ModelsEmployee::orderBy('created_at', 'desc')->paginate(1000);
+        return $students;
     }
 
 
@@ -93,7 +158,7 @@ class CustomQuerys extends Controller
             )
             ->leftJoin('sallery_sheets', 'sallery_sheets.employee_id', '=', 'employees.id')
             ->whereNull('sallery_sheets.employee_id')
-            // ->orWhere('enrollments.academic_id', '<>', $current_academic->id)
+                // ->orWhere('enrollments.academic_id', '<>', $current_academic->id)
             ->get();
 
         // return ModelsEmployee::orderBy('created_at', 'desc')->paginate(1000);
@@ -127,10 +192,10 @@ class CustomQuerys extends Controller
     {
         $users = DB::table('students')
             ->join('monthly_fees', 'students.id', '=', 'monthly_fees.student_id')
-            // ->join('monthly_fees', 'student.id', '=', 'orders.user_id')
-            // ->select('students.*', 'monthly_fees.discount', 'monthly_fees.submitted_fee', 'monthly_fees.determined_fee', 'monthly_fees.fee_name', 'monthly_fees.month')
-            // ->where('session', $request->session)
-            // ->where('class', $request->class)
+                // ->join('monthly_fees', 'student.id', '=', 'orders.user_id')
+                // ->select('students.*', 'monthly_fees.discount', 'monthly_fees.submitted_fee', 'monthly_fees.determined_fee', 'monthly_fees.fee_name', 'monthly_fees.month')
+                // ->where('session', $request->session)
+                // ->where('class', $request->class)
 
 
 
@@ -254,7 +319,7 @@ class CustomQuerys extends Controller
             ->where('student_id', $request->student_id)
             ->where('exam', $request->exam)
             ->where('class', $request->class)
-            // ->lists('subject', 'number');
+                // ->lists('subject', 'number');
             ->get();
     }
 

@@ -37,21 +37,25 @@ class FeesDetermination extends Controller
      */
     public function store(Request $request)
     {
-        return ModelsFeesDetermination::create([
-            // 'class_name' => $request->class_name,
+        return ModelsFeesDetermination::updateOrCreate([
             'academic_year' => $request->academic_year,
-            'boy_resi_new' => $request->boy_resi_new,
-            'boy_resi_old' => $request->boy_resi_old,
-            'boy_unresi_new' => $request->boy_unresi_new,
-            'boy_unresi_old' => $request->boy_unresi_old,
             'class_name' => $request->class_name,
-            'fee_name' => $request->fee_name,
-            'fee_type' => $request->fee_type,
-            'girl_resi_new' => $request->girl_resi_new,
-            'girl_resi_old' => $request->girl_resi_old,
-            'girl_unresi_new' => $request->girl_unresi_new,
-            'girl_unresi_old' => $request->girl_unresi_old,
-        ]);
+            'fee_name' => $request->fee_name
+        ], [
+                // 'class_name' => $request->class_name,
+
+                'boy_resi_new' => $request->boy_resi_new,
+                'boy_resi_old' => $request->boy_resi_old,
+                'boy_unresi_new' => $request->boy_unresi_new,
+                'boy_unresi_old' => $request->boy_unresi_old,
+
+
+                'fee_type' => $request->fee_type,
+                'girl_resi_new' => $request->girl_resi_new,
+                'girl_resi_old' => $request->girl_resi_old,
+                'girl_unresi_new' => $request->girl_unresi_new,
+                'girl_unresi_old' => $request->girl_unresi_old,
+            ]);
     }
 
     /**
