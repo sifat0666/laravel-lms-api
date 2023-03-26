@@ -37,6 +37,7 @@ use App\Http\Controllers\MonthName;
 use App\Http\Controllers\PassMarks;
 use App\Http\Controllers\PasswordResetController;
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -66,6 +67,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('logout', [LogoutController::class, 'logout']);
+    Route::apiResource('student', StudentController::class);
+
+    Route::post('update-username', function (Request $request) {
+        $user = User::where('id', $request->user()->id)->first();
+
+        $user->name = $request->name;
+        $user->save();
+        return $user;
+    });
+
+    Route::post('change-password', [PasswordResetController::class, 'change_password']);
+
+
 });
 Route::post('login', [LoginController::class, 'login']);
 Route::post('register', [RegisterController::class, 'register']);
@@ -127,7 +141,6 @@ Route::post('moukuf-student', [CustomQuerys::class, 'filterMoukufStudent']);
 
 
 //Student Routes
-Route::apiResource('student', StudentController::class);
 Route::apiResource('exam-entry', ExamNameAndFee::class);
 Route::apiResource('pass-mark', PassMarks::class);
 Route::apiResource('division-entry', DivisionEntry::class);
