@@ -23,8 +23,8 @@ return new class extends Migration {
             $table->string('receiver');
             $table->string('student_id');
             $table->string('student_name');
+            $table->string('session');
             $table->string('submitted_fee');
-            $table->string('submit_date')->nullable();
             $table->timestamps();
         });
     }

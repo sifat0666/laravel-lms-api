@@ -20,6 +20,6 @@ class MonthlyFee extends Model
         'student_id',
         'student_name',
         'submitted_fee',
-        'submit_date'
+        'session'
     ];
 }

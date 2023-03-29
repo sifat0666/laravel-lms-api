@@ -47,6 +47,7 @@ class MonthlyFee extends Controller
                 'fee_name' => $request->fee_name
             ],
             [
+                'session' => $request->session,
                 'class' => $request->class,
                 'determined_fee' => $request->determined_fee,
                 'discount' => $request->discount,
@@ -54,7 +55,6 @@ class MonthlyFee extends Controller
                 'receiver' => $request->receiver,
                 'student_name' => $request->student_name,
                 'submitted_fee' => $request->submitted_fee,
-                'submit_date ' => strval($request->submit_date)
             ]
         );
     }

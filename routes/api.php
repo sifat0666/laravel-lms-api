@@ -123,6 +123,11 @@ Route::post('payroll-filter', [CustomQuerys::class, 'employeePayrollFilteredBySe
 Route::post('employee-payroll-queue', [CustomQuerys::class, 'employee_payroll_queue']);
 Route::post('doner-fee', [CustomQuerys::class, 'DonerFeeFilteredBySessionAndMonth']);
 Route::post('moukuf-student', [CustomQuerys::class, 'filterMoukufStudent']);
+Route::post('mash-hishebe-mashik-fee', [CustomQuerys::class, 'MashHishebeMashikFee']);
+Route::post('mash-hishebe-mashik-fee-bokeya', [CustomQuerys::class, 'MashHishebeMashikFeeBokeya']);
+
+//
+
 
 
 //filterMoukufStudent
