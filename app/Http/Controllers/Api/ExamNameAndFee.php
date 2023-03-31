@@ -36,13 +36,16 @@ class ExamNameAndFee extends Controller
      */
     public function store(Request $request)
     {
-        return ModelsExamNameAndFee::create([
+        return ModelsExamNameAndFee::updateOrCreate([
             'class' => $request->class,
             'exam_name' => $request->exam_name,
-            'exam_namea' => $request->exam_namea,
-            'fee' => $request->fee,
             'session' => $request->session
-        ]);
+        ], [
+
+                'exam_namea' => $request->exam_namea,
+                'fee' => $request->fee,
+
+            ]);
     }
 
     /**
