@@ -66,6 +66,15 @@ class CustomQuerys extends Controller
             ->get();
     }
 
+    public function DivisionByClass(Request $request)
+    {
+        return DB::table('division_entries')
+            ->where('session', $request->session)
+            ->where('exam_name', $request->exam_name)
+            ->where('class', $request->class)
+            ->get();
+    }
+
     public function MashHishebeMashikFeeBokeya(Request $request)
     {
 

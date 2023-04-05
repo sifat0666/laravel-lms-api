@@ -110,6 +110,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('moukuf-student', [CustomQuerys::class, 'filterMoukufStudent']);
     Route::post('mash-hishebe-mashik-fee', [CustomQuerys::class, 'MashHishebeMashikFee']);
     Route::post('mash-hishebe-mashik-fee-bokeya', [CustomQuerys::class, 'MashHishebeMashikFeeBokeya']);
+    Route::post('division-by-class', [CustomQuerys::class, 'DivisionByClass']);
+
+
 
     //
 
