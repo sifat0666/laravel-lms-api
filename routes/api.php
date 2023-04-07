@@ -38,6 +38,7 @@ use App\Http\Controllers\MonthName;
 use App\Http\Controllers\PassMarks;
 use App\Http\Controllers\PasswordResetController;
 use App\Models\BookSale;
+use App\Models\MessageSettings;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -86,6 +87,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('podobi', Podobi::class);
     Route::apiResource('teacher-month-entry', TeacherMonthEntry::class);
     Route::apiResource('monthly-sallery-entry', SalleryPaymentSheet::class);
+    Route::apiResource('msg-settings', MessageSettings::class);
 
 
     //Custom
