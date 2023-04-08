@@ -35,6 +35,7 @@ use App\Http\Controllers\Api\TeacherMonthEntry;
 use App\Http\Controllers\Book;
 use App\Http\Controllers\DivisionEntry;
 use App\Http\Controllers\MonthName;
+use App\Http\Controllers\MsgSettings;
 use App\Http\Controllers\PassMarks;
 use App\Http\Controllers\PasswordResetController;
 use App\Models\BookSale;
@@ -87,7 +88,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('podobi', Podobi::class);
     Route::apiResource('teacher-month-entry', TeacherMonthEntry::class);
     Route::apiResource('monthly-sallery-entry', SalleryPaymentSheet::class);
-    Route::apiResource('msg-settings', MessageSettings::class);
+    Route::apiResource('msg-settings', MsgSettings::class);
 
 
     //Custom

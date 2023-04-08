@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-// use App\Models\MessageSettings as ModelsMessageSettings;
-use App\Models\MessageSettings as ModelsMessageSettings;
-
+use App\Models\MsgSettings as ModelsMsgSettings;
 use Illuminate\Http\Request;
 
-class MessageSettings extends Controller
+class MsgSettings extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +14,8 @@ class MessageSettings extends Controller
      */
     public function index()
     {
-        // App\Models\MessageSettings::get()
+        return ModelsMsgSettings::orderBy('created_at', 'desc')->get();
+
     }
 
     /**
@@ -38,20 +36,10 @@ class MessageSettings extends Controller
      */
     public function store(Request $request)
     {
-        // return App\Models\MessageSettings::create([
-        //     'condition' => $request->condition,
-        //     'msg' => $request->msg,
-        //     'type' => $request->type,
-        // ]);
-        return \App\Models\MessageSettings::create([
-            'class' => $request->class,
-            'exam' => $request->exam,
-            'number' => $request->number,
-            'session' => $request->session,
-            'student_id' => $request->student_id,
-            'subject' => $request->subject,
-            'pass_number' => $request->pass_number,
-            'highest_number' => $request->highest_number
+        return ModelsMsgSettings::updateOrCreate(['type' => $request->type,], [
+            'condition' => $request->condition,
+            'msg' => $request->msg,
+
         ]);
     }
 
